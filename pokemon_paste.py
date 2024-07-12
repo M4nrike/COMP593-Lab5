@@ -46,13 +46,13 @@ def get_paste_data(pokemon_info):
         (str, str): Title and body text for the PasteBin paste
     """    
     # TODO: Build the paste title
-    poke_name = pokemon_info['name'].capitalize()      #Duda potencial en los terminos entre [] despues de las variables
+    poke_name = pokemon_info['name'].capitalize()      
     Title = f'{poke_name}\'s Abilities'
 
     # TODO: Build the paste body text
     body = ''
-    for poke in pokemon_info['abilities']:                  #Duda potencial en los terminos entre [] despues de las variables
-        body += poke['abilities'] + '\n\n'                  #Duda potencial en los terminos entre [] despues de las variables
+    for poke in pokemon_info['abilities']:                  
+        body += poke['ability']['name'] + '\n\n'                  
 
     return (Title, body[:-2])
 

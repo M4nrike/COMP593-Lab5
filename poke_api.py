@@ -10,11 +10,9 @@ def main():
 
     # Test out the get_pokemon_info() function
     poke_info =  get_pokemon_info("Rockruff")
-    for p in poke_info:
-        print (p['name:'])                                              #Duda potencial en los terminos entre [] despues de las variables
+    print (poke_info)   
 
-    # Use breakpoints to view returned dictionary                       #Duda en uso de breakpoints para diccionario
-
+    #Add breakpounts to see the dictionary populated                     
     
     return
 
@@ -32,25 +30,20 @@ def get_pokemon_info(pokemon_name):
     pokemon_name = str(pokemon_name).lower().strip()
 
     # TODO: Build a clean URL and use it to send a GET request
-    clean_url = f'{POKE_API_URL}{pokemon_name}' + 'search'
+    clean_url = f'{POKE_API_URL}{pokemon_name}'
 
-    try:
-        print (f'Getting information for {pokemon_name}...', end='')
-        api_request = requests.get(clean_url)
+    print (f'Getting information for {pokemon_name}...', end='')
+    api_request = requests.get(clean_url)
         
-        if api_request.status_code == requests.codes.ok:
+    if api_request.status_code == requests.codes.ok:
 
-        # TODO: If the GET request was successful, convert the JSON-formatted message body text to a dictionary and return it
-            print("Success")
-            return api_request.json()
+    # TODO: If the GET request was successful, convert the JSON-formatted message body text to a dictionary and return it
+        print("Success")
+        return api_request.json()
         
-        # TODO: If the GET request failed, print the error reason and return None
-        else:
-            print (f"Failure in gathering the information. \n Status code: {api_request.status_code} ({api_request.reason})")
-            return None
-        
-    except requests.RequestException as e:
-        print (f"Failure :{e}")
+    # TODO: If the GET request failed, print the error reason and return None
+    else:
+        print (f"Failure in gathering the information. \n Status code: {api_request.status_code} ({api_request.reason})")
         return None
     
 
